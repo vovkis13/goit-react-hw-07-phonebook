@@ -23,31 +23,31 @@ const loadingReducer = createReducer(false, {
 });
 
 const errorReducer = createReducer(null, {
-  [getContacts.pending]: () => null,
   [getContacts.rejected]: (_state, { payload }) => payload,
+  [getContacts.pending]: () => null,
 
-  [postContact.pending]: () => null,
   [postContact.rejected]: (_state, { payload }) => payload,
+  [postContact.pending]: () => null,
 
-  [deleteContact.pending]: () => null,
   [deleteContact.rejected]: (_state, { payload }) => payload,
+  [deleteContact.pending]: () => null,
 });
 
 const filterReducer = createReducer('', {
   [changeFilter]: (_state, { payload }) => payload,
 });
 
-function addContact(items, { payload }) {
+function addContact(contacts, { payload }) {
   const { id, name, phone } = payload;
-  const isFound = items.find(
-    item => item.name.toLowerCase() === name.toLowerCase(),
+  const isFound = contacts.find(
+    contact => contact.name.toLowerCase() === name.toLowerCase(),
   );
   if (isFound) return window.alert(`${name} is already in contacts.`);
-  return [{ id, name, phone }, ...items];
+  return [{ id, name, phone }, ...contacts];
 }
 
-function delContact(items, { payload }) {
-  return items.filter(({ id }) => id !== payload);
+function delContact(contacts, { payload }) {
+  return contacts.filter(({ id }) => id !== payload);
 }
 
 export default combineReducers({
