@@ -1,40 +1,40 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import changeFilter from './actions';
-import { getItems, postItem, deleteItem } from './operations';
+import { getContacts, postContact, deleteContact } from './operations';
 
 const contactsReducer = createReducer([], {
-  [getItems.fulfilled]: (_, { payload }) => payload,
-  [postItem.fulfilled]: addContact,
-  [deleteItem.fulfilled]: deleteContact,
+  [getContacts.fulfilled]: (_state, { payload }) => payload,
+  [postContact.fulfilled]: addContact,
+  [deleteContact.fulfilled]: delContact,
 });
 
 const loadingReducer = createReducer(false, {
-  [getItems.pending]: () => true,
-  [getItems.fulfilled]: () => false,
-  [getItems.rejected]: () => false,
+  [getContacts.pending]: () => true,
+  [getContacts.fulfilled]: () => false,
+  [getContacts.rejected]: () => false,
 
-  [postItem.pending]: () => true,
-  [postItem.fulfilled]: () => false,
-  [postItem.rejected]: () => false,
+  [postContact.pending]: () => true,
+  [postContact.fulfilled]: () => false,
+  [postContact.rejected]: () => false,
 
-  [deleteItem.pending]: () => true,
-  [deleteItem.fulfilled]: () => false,
-  [deleteItem.rejected]: () => false,
+  [deleteContact.pending]: () => true,
+  [deleteContact.fulfilled]: () => false,
+  [deleteContact.rejected]: () => false,
 });
 
 const errorReducer = createReducer(null, {
-  [getItems.pending]: () => null,
-  [getItems.rejected]: (_, { payload }) => payload,
+  [getContacts.pending]: () => null,
+  [getContacts.rejected]: (_state, { payload }) => payload,
 
-  [postItem.pending]: () => null,
-  [postItem.rejected]: (_, { payload }) => payload,
+  [postContact.pending]: () => null,
+  [postContact.rejected]: (_state, { payload }) => payload,
 
-  [deleteItem.pending]: () => null,
-  [deleteItem.rejected]: (_, { payload }) => payload,
+  [deleteContact.pending]: () => null,
+  [deleteContact.rejected]: (_state, { payload }) => payload,
 });
 
 const filterReducer = createReducer('', {
-  [changeFilter]: (_, { payload }) => payload,
+  [changeFilter]: (_state, { payload }) => payload,
 });
 
 function addContact(items, { payload }) {
@@ -43,10 +43,10 @@ function addContact(items, { payload }) {
     item => item.name.toLowerCase() === name.toLowerCase(),
   );
   if (isFound) return window.alert(`${name} is already in contacts.`);
-  return [{ id: id, name: name, phone: phone }, ...items];
+  return [{ id, name, phone }, ...items];
 }
 
-function deleteContact(items, { payload }) {
+function delContact(items, { payload }) {
   return items.filter(({ id }) => id !== payload);
 }
 

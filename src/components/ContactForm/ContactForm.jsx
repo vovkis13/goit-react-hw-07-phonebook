@@ -1,26 +1,25 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postItem } from 'redux/operations';
+import { postContact } from 'redux/operations';
 import changeFilter from 'redux/actions';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    if (name === 'name') setName(value);
-    else if (name === 'number') setNumber(value);
+  const handleChange = ({ target: { name, value } }) => {
+    if (name === 'name') return setName(value);
+    setPhone(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(postItem({ name: name, phone: number }));
+    dispatch(postContact({ name, phone }));
     dispatch(changeFilter(''));
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -44,8 +43,8 @@ export default function ContactForm() {
           <input
             className={s.input}
             type="tel"
-            name="number"
-            value={number}
+            name="phone"
+            value={phone}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required

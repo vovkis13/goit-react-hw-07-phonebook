@@ -10,19 +10,17 @@ export default function Filter() {
   return (
     <div className={s.filter}>
       <p className={s.title}>Find contacts by name</p>
-      <label>
-        <input
-          className={s.input}
-          type="text"
-          name="filterValue"
-          value={filter}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces.
+      <input
+        className={s.input}
+        type="text"
+        name="filterValue"
+        value={filter}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces.
             For example Adrian, Jacob Mercer, Charles de Batz de Castelmore
             d'Artagnan"
-          onChange={e => dispatch(changeFilter(e.target.value))}
-        />
-      </label>
+        onChange={e => dispatch(changeFilter(e.target.value))}
+      />
     </div>
   );
 }

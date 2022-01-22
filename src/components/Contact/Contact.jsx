@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import changeFilter from 'redux/actions';
-import { deleteItem } from 'redux/operations';
+import { deleteContact } from 'redux/operations';
 
 import s from './Contact.module.css';
 
@@ -12,7 +12,7 @@ export default function Contact({ contact }) {
   const handleDelete = e => {
     e.preventDefault();
     dispatch(changeFilter(''));
-    dispatch(deleteItem(id));
+    dispatch(deleteContact(id));
   };
 
   return (
