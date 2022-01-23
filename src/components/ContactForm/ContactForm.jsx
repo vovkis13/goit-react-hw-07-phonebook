@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postContact } from 'redux/operations';
-import changeFilter from 'redux/actions';
+import { changeFilter } from 'redux/actions';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -39,7 +39,7 @@ export default function ContactForm() {
           />
         </label>
         <label className={s.label}>
-          <p className={s.labelName}>Number</p>
+          <p className={s.labelName}>Phone</p>
           <input
             className={s.input}
             type="tel"

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { getLoading, getError } from 'redux/selectors';
 import { BallTriangle } from 'react-loader-spinner';
+import { getLoading, getError } from 'redux/selectors';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList/';

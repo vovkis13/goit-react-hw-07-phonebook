@@ -1,12 +1,10 @@
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import changeFilter from 'redux/actions';
+import { useDispatch } from 'react-redux';
+import { changeFilter } from 'redux/actions';
 import { deleteContact } from 'redux/operations';
-
 import s from './Contact.module.css';
 
-export default function Contact({ contact }) {
-  const { id, name, phone } = contact;
+export default function Contact({ contact: { id, name, phone } }) {
   const dispatch = useDispatch();
 
   const handleDelete = e => {

@@ -1,3 +1,3 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export default createAction('filter/Change');
+export const changeFilter = createAction('filter/Change');
