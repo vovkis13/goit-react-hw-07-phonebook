@@ -2,7 +2,7 @@
 body {
   width: 480px;
   padding: 40px;
-  margin: 0;
+  margin: 0 auto;
   font-family: 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
