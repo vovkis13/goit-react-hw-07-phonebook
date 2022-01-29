@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from 'redux/selectors';
 import { getContacts } from 'redux/operations';
-import Contact from 'components/Contact';
+import Contact from 'components/ContactList/Contact';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
